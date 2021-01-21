@@ -9,5 +9,6 @@ public class StartUI {
         item.setId(2);
         Item num = tracker.findById(2);
         System.out.println(num.getId());
+        item.setName("igor");
     }
 }
