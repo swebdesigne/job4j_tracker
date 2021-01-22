@@ -25,12 +25,12 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] namesWithoutNull = new Item[size];
         int index = 0;
-        for (; index < size;) {
-            Item value = items[index];
-            if (key.equals(items[index].getName())) {
+        for (int i = 0; i < size; i++) {
+            Item value = items[i];
+            if (key.equals(items[i].getName())) {
                 namesWithoutNull[index] = value;
+                index++;
             }
-            index++;
         }
         namesWithoutNull = Arrays.copyOf(namesWithoutNull, index);
         return namesWithoutNull;
