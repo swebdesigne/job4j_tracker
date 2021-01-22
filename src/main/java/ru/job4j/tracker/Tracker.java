@@ -31,9 +31,7 @@ public class Tracker {
                 namesWithoutNull[index] = value;
             }
         }
-        namesWithoutNull = index == 0
-                ? Arrays.copyOf(namesWithoutNull, index)
-                : Arrays.copyOf(namesWithoutNull, size);
+        namesWithoutNull = Arrays.copyOf(namesWithoutNull, index);
         return namesWithoutNull;
     }
 
