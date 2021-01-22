@@ -29,8 +29,8 @@ public class Tracker {
             Item value = items[index];
             if (key.equals(items[index].getName())) {
                 namesWithoutNull[index] = value;
-                index++;
             }
+            index++;
         }
         namesWithoutNull = Arrays.copyOf(namesWithoutNull, index);
         return namesWithoutNull;
@@ -41,6 +41,7 @@ public class Tracker {
         boolean rsl = index != -1;
         if (rsl) {
             items[index] = item;
+            item.setId(id);
         }
         return rsl;
     }
