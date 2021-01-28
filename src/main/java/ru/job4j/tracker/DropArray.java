@@ -15,6 +15,6 @@ public class DropArray {
                 size++;
             }
         }
-        namesWithoutNull = Arrays.copyOf(namesWithoutNull,size);
+        namesWithoutNull = Arrays.copyOf(namesWithoutNull, size);
     }
 }
