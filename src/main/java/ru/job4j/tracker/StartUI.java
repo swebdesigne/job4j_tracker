@@ -17,20 +17,20 @@ public class StartUI {
                 tracker.add(item);
             } else if (select == 1) {
                 Item[] items = tracker.findAll();
-                for (int i = 0; i < items.length; i++) {
-                    Item value = items[i];
-                    if (value != null) {
+                System.out.println(items.length);
+                if (items.length > 0) {
+                    for (int i = 0; i < items.length; i++) {
+                        Item value = items[i];
                         System.out.println("value = " + value.getName());
-                    } else {
-                        System.out.println("value is null");
                     }
+                } else {
+                    System.out.println("array is empty");
                 }
             } else if (select == 2) {
                 int id = Integer.parseInt(scanner.nextLine());
                 String name = scanner.nextLine();
                 Item item = new Item(name);
                 if (tracker.replace(id, item)) {
-                    tracker.replace(id, item);
                     System.out.println("Operation `the replace` complied successfully");
                     System.out.println("The new name is " + name);
                 } else {
@@ -42,7 +42,6 @@ public class StartUI {
             } else if (select == 3) {
                 int id = Integer.parseInt(scanner.nextLine());
                 if (tracker.delete(id)) {
-                    tracker.delete(id);
                     System.out.println("Operation `the delete` complied success");
                 } else {
                     System.out.println(
@@ -66,7 +65,8 @@ public class StartUI {
                 } else {
                     for (int i = 0; i < items.length; i++) {
                         Item value = items[i];
-                        System.out.println(value.getName());
+                        System.out.println("The name is " + value.getName());
+                        System.out.println("id = " + value.getId());
                     }
                 }
             }
