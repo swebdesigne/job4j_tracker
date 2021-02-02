@@ -7,7 +7,7 @@ public class StartUI {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
             UserAction action = actions[select];
-            action.execute(input, tracker);
+            run = action.execute(input, tracker);
         }
     }
 
@@ -28,6 +28,7 @@ public class StartUI {
                 new DeleteItem(),
                 new FindItemById(),
                 new FindItemByName(),
+                new Exit()
         };
         new StartUI().init(input, tracker, actions);
     }
