@@ -17,9 +17,9 @@ public class DeleteItem implements UserAction {
         output.println("=== Delete Item ===");
         int id = Integer.parseInt(input.askStr("Enter id"));
         if (tracker.delete(id)) {
-            System.out.println("Operation `the delete` complied success");
+            output.println("Operation `the delete` complied success");
         } else {
-            System.out.println(
+            output.println(
                     "Since id #"
                             + id + " not exists. Operation `the replace` cannot be complied"
             );

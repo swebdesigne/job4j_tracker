@@ -18,9 +18,9 @@ public class FindItemById implements UserAction {
         int id = Integer.parseInt(input.askStr("Enter id"));
         Item item = tracker.findById(id);
         if (item == null) {
-            System.out.println("The statement with this id don`t exists");
+            output.println("The statement with this id don`t exists");
         } else {
-            System.out.println(item.toString());
+            output.println(item.toString());
         }
         return true;
     }

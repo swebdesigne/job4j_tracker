@@ -19,10 +19,10 @@ public class FindAllItem implements UserAction {
         if (items.length > 0) {
             for (int i = 0; i < items.length; i++) {
                 Item value = items[i];
-                System.out.println("value = " + value.getName());
+                output.println("value = " + value.getName());
             }
         } else {
-            System.out.println("array is empty");
+            output.println("array is empty");
         }
         return true;
     }
