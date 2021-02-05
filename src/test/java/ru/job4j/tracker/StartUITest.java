@@ -3,6 +3,8 @@ package ru.job4j.tracker;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
+
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.*;
@@ -80,17 +82,16 @@ public class StartUITest {
 
     @Test
     public void findAllAction() {
-        Item[] ids;
+        Item[] ids = new Item[2];
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("First element"));
+        ids[0] = item;
         String id = String.valueOf(item.getId());
         item = tracker.add(new Item("Second element"));
-        id = String.valueOf(item.getId());
-        ids = new Item[] {item};
+        ids[1] = item;
         for (int i = 0; i < ids.length - 1; i++) {
             Item value = ids[i];
-            System.out.println(value.getId());
             Input in = new StubInput(
                     new String[] {"0", String.valueOf(value.getId()), "1"}
             );
@@ -99,7 +100,26 @@ public class StartUITest {
                     new Exit()
             };
             new StartUI(output).init(in, tracker, actions);
-            assertThat(tracker.findAll()[i].getName(), is(value.getName()));
+            assertThat(output.toString(), is(
+                    "Menu."
+                            + System.lineSeparator()
+                            + "0. Show all items."
+                            + System.lineSeparator()
+                            + "1. Exit"
+                            + System.lineSeparator()
+                            + "=== Find all Item ==="
+                            + System.lineSeparator()
+                            + "value = " + value.getName()
+                            + System.lineSeparator()
+                            + "value = " + item.getName() + ""
+                            + System.lineSeparator()
+                            + "Menu."
+                            + System.lineSeparator()
+                            + "0. Show all items."
+                            + System.lineSeparator()
+                            + "1. Exit" + System.lineSeparator()
+                    )
+            );
         }
     }
 
@@ -107,7 +127,7 @@ public class StartUITest {
     public void findByNameAction() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("Find item by Name"));
+        Item item = tracker.add(new Item("Find items by name."));
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getName()), "1"}
         );
@@ -116,14 +136,35 @@ public class StartUITest {
                 new Exit()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(tracker.findByName(item.getName())[0].getName(), is(item.getName()));
+        LocalDateTime created = LocalDateTime.now();
+        assertThat(output.toString(), is(
+                "Menu."
+                        + System.lineSeparator()
+                        + "0. " + item.getName()
+                        + System.lineSeparator()
+                        + "1. Exit"
+                        + System.lineSeparator()
+                        + "=== Find Item by name ==="
+                        + System.lineSeparator()
+                        + "Item{"
+                        + "id=" + item.getId() + ", "
+                        + "name='" + item.getName() + "'"
+                        + "}"
+                        + System.lineSeparator()
+                        + "Menu."
+                        + System.lineSeparator()
+                        + "0. Find items by name."
+                        + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                )
+        );
     }
 
     @Test
     public void findByIdAction() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("Find item by id"));
+        Item item = tracker.add(new Item("Find item by Id."));
         String id = String.valueOf(item.getId());
         Input in = new StubInput(
                 new String[] {"0", id, "1"}
@@ -133,8 +174,26 @@ public class StartUITest {
                 new Exit()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getId(), is(Integer.parseInt(id)));
+        assertThat(output.toString(), is(
+                "Menu."
+                        + System.lineSeparator()
+                        + "0. " + item.getName()
+                        + System.lineSeparator()
+                        + "1. Exit"
+                        + System.lineSeparator()
+                        + "=== Find Item by id ==="
+                        + System.lineSeparator()
+                        + "Item{"
+                        + "id=" + item.getId() + ", "
+                        + "name='" + item.getName() + "'"
+                        + "}"
+                        + System.lineSeparator()
+                        + "Menu."
+                        + System.lineSeparator()
+                        + "0. Find item by Id."
+                        + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                )
+        );
     }
-
-
 }
