@@ -41,8 +41,7 @@ public class TrackerTest {
         bug.setName("Bug");
         tracker.add(bug);
         int id = bug.getId();
-        tracker.delete(id);
-        assertThat(tracker.findById(id), is(nullValue()));
+        assertThat(tracker.delete(id), is(true));
     }
 
     @Test
@@ -65,10 +64,9 @@ public class TrackerTest {
         item.setName("Boris");
         tracker.add(item);
         Item[] name = tracker.findByName("Igor");
-        System.out.println(name.length);
         for (int i = 0; i < name.length; i++) {
             Item value = name[i];
-            assertThat(value, is(nullValue()));
+            assertThat(item.getName().equals(value), is(false));
         }
     }
 }
