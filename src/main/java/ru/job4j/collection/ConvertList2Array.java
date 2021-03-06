@@ -7,21 +7,18 @@ import java.util.List;
 public class ConvertList2Array {
     public static int[][] toArray(List<Integer> list, int cells) {
         int groups = (int) Math.ceil((double) list.size() / cells);
-        System.out.println("groups = " + groups);
-        System.out.println("list.size()  = " + list.size());
-        System.out.println(groups);
         int[][] array = new int[groups][cells];
         int row = 0, cell = 0;
         for (Integer num : list) {
-            System.out.println("row = " + row);
-            System.out.println("cell = " + cell);
-            if (cell < groups) {
+            if (cell < cells) {
                 array[row][cell] = num;
                 cell++;
-            } else {
+            }
+            if (cell == cells) {
                 cell = 0;
                 row++;
             }
+
         }
         return array;
     }
