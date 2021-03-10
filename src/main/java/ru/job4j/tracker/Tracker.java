@@ -7,7 +7,7 @@ import java.util.List;
 public final class Tracker {
     private static Tracker instance = null;
     private final List<Item> items = new ArrayList<>();
-    private int ids = 1;
+    private int ids = 0;
 
     private Tracker() {
 
@@ -22,11 +22,13 @@ public final class Tracker {
 
     public Item add(Item item) {
         items.add(item);
-        item.setId(items.size() - 1);
+        item.setId(ids++);
         return item;
     }
 
     public Item findById(int id) {
+        System.out.println(items.get(id));
+
         int index = indexOf(id);
         return index != -1 ? items.get(index) : null;
     }
@@ -64,6 +66,7 @@ public final class Tracker {
         if (id <= items.size()) {
             rsl = id;
         }
+
         return rsl;
     }
 
