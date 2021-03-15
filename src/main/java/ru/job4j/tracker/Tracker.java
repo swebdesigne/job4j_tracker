@@ -27,8 +27,6 @@ public final class Tracker {
     }
 
     public Item findById(int id) {
-        System.out.println(items.get(id));
-
         int index = indexOf(id);
         return index != -1 ? items.get(index) : null;
     }
@@ -42,7 +40,7 @@ public final class Tracker {
         int index = 0;
         for (int i = 0; i < items.size(); i++) {
             Item value = items.get(i);
-            if (key.equals(items.get(i).getName())) {
+            if (key.equals(value.getName())) {
                 namesWithoutNull[index] = value;
                 index++;
             }
@@ -63,10 +61,12 @@ public final class Tracker {
 
     private int indexOf(int id) {
         int rsl = -1;
-        if (id <= items.size()) {
-            rsl = id;
+        for (int index = 0; index < items.size(); index++) {
+            if (items.get(index).getId() == id) {
+                rsl = index;
+                break;
+            }
         }
-
         return rsl;
     }
 
