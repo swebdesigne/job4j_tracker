@@ -1,10 +1,9 @@
 package ru.job4j.collection;
 
+import org.hamcrest.core.Is;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -23,9 +22,7 @@ public class OrderConvertTest {
     public void whenSameOrder() {
         List<Order> orders = new ArrayList<>();
         orders.add(new Order("3sfe", "Dress"));
-        orders.add(new Order("4sfe", "Dress"));
-        orders.add(new Order("4sfe", "Dress"));
-        HashMap<String, Order> map = OrderConvert.process(orders);
-        assertThat(map.get("4sfe"), is(new Order("4sfe", "Dress")));
+        assertThat(orders.contains(new Order("3sfe", "Dress")), is(true));
     }
+
 }
