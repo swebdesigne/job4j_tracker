@@ -1,4 +1,4 @@
-package ru.job4j;
+package ru.job4j.collection;
 
 import ru.job4j.collection.Citizen;
 
