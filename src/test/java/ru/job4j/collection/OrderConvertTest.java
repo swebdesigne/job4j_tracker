@@ -22,6 +22,8 @@ public class OrderConvertTest {
     public void whenSameOrder() {
         List<Order> orders = new ArrayList<>();
         orders.add(new Order("3sfe", "Dress"));
+        orders.add(new Order("3sfe", "Dress"));
+        orders.add(new Order("3sfe", "Dress"));
         assertThat(orders.contains(new Order("3sfe", "Dress")), is(true));
     }
 
