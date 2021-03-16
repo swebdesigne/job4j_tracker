@@ -37,12 +37,9 @@ public final class Tracker {
 
     public List<Item> findByName(String key) {
         List<Item> namesWithoutNull = new ArrayList<>();
-        int index = 0;
-        for (int i = 0; i < items.size(); i++) {
-            Item value = items.get(i);
-            if (key.equals(value.getName())) {
-                namesWithoutNull.add(value);
-                index++;
+        for (Item item : items) {
+            if (key.equals(item.getName())) {
+                namesWithoutNull.add(item);
             }
         }
         return namesWithoutNull;
@@ -52,6 +49,7 @@ public final class Tracker {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
+            System.out.println(id);
             items.set(id, item);
             item.setId(id);
         }
