@@ -6,6 +6,8 @@ import org.w3c.dom.ls.LSOutput;
 
 import javax.crypto.spec.PSource;
 
+import java.util.List;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -50,9 +52,9 @@ public class TrackerTest {
         Item item = new Item();
         item.setName("Igor");
         tracker.add(item);
-        Item[] name = tracker.findByName("Igor");
-        for (int i = 0; i < name.length; i++) {
-            Item value = name[i];
+        List<Item> name = tracker.findByName("Igor");
+        for (int i = 0; i < name.size(); i++) {
+            Item value = name.get(i);
             assertThat(value.getName(), is(item.getName()));
         }
     }
@@ -63,9 +65,9 @@ public class TrackerTest {
         Item item = new Item();
         item.setName("Boris");
         tracker.add(item);
-        Item[] name = tracker.findByName("Igor");
-        for (int i = 0; i < name.length; i++) {
-            Item value = name[i];
+        List<Item> name = tracker.findByName("Igor");
+        for (int i = 0; i < name.size(); i++) {
+            Item value = name.get(i);
             assertThat(item.getName().equals(value), is(false));
         }
     }

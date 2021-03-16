@@ -35,19 +35,16 @@ public final class Tracker {
         return items;
     }
 
-    public Item[] findByName(String key) {
-        Item[] namesWithoutNull = new Item[items.size()];
+    public List<Item> findByName(String key) {
+        List<Item> namesWithoutNull = new ArrayList<>();
         int index = 0;
         for (int i = 0; i < items.size(); i++) {
             Item value = items.get(i);
-            System.out.println(value.getName());
-            System.out.println(value.getId());
             if (key.equals(value.getName())) {
-                namesWithoutNull[index] = value;
+                namesWithoutNull.add(value);
                 index++;
             }
         }
-        namesWithoutNull = Arrays.copyOf(namesWithoutNull, index);
         return namesWithoutNull;
     }
 
@@ -77,7 +74,7 @@ public final class Tracker {
         if (index == -1) {
             return false;
         }
-        items.remove(id);
+        items.remove(index);
         return true;
     }
 }

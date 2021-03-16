@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -18,7 +19,7 @@ public class StartUITest {
                 new String[] {"0", "Item name", "1"}
         );
         Tracker tracker = Tracker.getInstance();
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction(output));
         actions.add(new Exit(output));
         new StartUI(output).init(in, tracker, actions);
@@ -37,7 +38,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", id, replacedName, "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new ReplaceItem(output));
         actions.add(new Exit(output));
         new StartUI(output).init(in, tracker, actions);
@@ -55,7 +56,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", id, "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new DeleteItem(output));
         actions.add(new Exit(output));
         new StartUI(output).init(in, tracker, actions);
@@ -69,7 +70,7 @@ public class StartUITest {
                 new String[] {"0"}
         );
         Tracker tracker = Tracker.getInstance();
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new Exit(output));
         new StartUI(output).init(in, tracker, actions);
         assertThat(output.toString(), is(
@@ -92,7 +93,7 @@ public class StartUITest {
             Input in = new StubInput(
                     new String[] {"0", String.valueOf(value.getId()), "1"}
             );
-            ArrayList<UserAction> actions = new ArrayList<>();
+            List<UserAction> actions = new ArrayList<>();
             actions.add(new FindAllItem(output));
             actions.add(new Exit(output));
             new StartUI(output).init(in, tracker, actions);
@@ -127,7 +128,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getName()), "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new FindItemByName(output));
         actions.add(new Exit(output));
         new StartUI(output).init(in, tracker, actions);
@@ -164,7 +165,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", id, "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new FindItemById(output));
         actions.add(new Exit(output));
         new StartUI(output).init(in, tracker, actions);
@@ -198,7 +199,7 @@ public class StartUITest {
                 new String[] {"7", "0", "0"}
         );
         Tracker tracker = Tracker.getInstance();
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
