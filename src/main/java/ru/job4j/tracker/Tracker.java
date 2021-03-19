@@ -7,10 +7,7 @@ import java.util.List;
 public final class Tracker {
     private static Tracker instance = null;
     private final List<Item> items = new ArrayList<>();
-
-    private Tracker() {
-
-    }
+    private int ids = 0;
 
     public static Tracker getInstance() {
         if (instance == null) {
@@ -21,7 +18,7 @@ public final class Tracker {
 
     public Item add(Item item) {
         items.add(item);
-        item.setId(items.size() - 1);
+        item.setId(ids++);
         return item;
     }
 

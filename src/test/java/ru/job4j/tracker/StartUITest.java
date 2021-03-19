@@ -18,7 +18,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction(output));
         actions.add(new Exit(output));
@@ -29,7 +29,7 @@ public class StartUITest {
     @Test
     public void whenReplaceItem() {
         Output output = new StubOutput();
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         /* Добавим в tracker новую заявку */
         Item item = tracker.add(new Item("Replaced item"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
@@ -48,7 +48,7 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Output output = new StubOutput();
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         /* Добавим в tracker новую заявку */
         Item item = tracker.add(new Item("Deleted item"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
@@ -69,7 +69,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0"}
         );
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new Exit(output));
         new StartUI(output).init(in, tracker, actions);
@@ -82,7 +82,7 @@ public class StartUITest {
     public void findAllAction() {
         Item[] ids = new Item[2];
         Output output = new StubOutput();
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("First element"));
         ids[0] = item;
         String id = String.valueOf(item.getId());
@@ -123,7 +123,7 @@ public class StartUITest {
     @Test
     public void findByNameAction() {
         Output output = new StubOutput();
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Find items by name."));
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getName()), "1"}
@@ -159,7 +159,7 @@ public class StartUITest {
       @Test
     public void findByIdAction() {
         Output output = new StubOutput();
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Find item by Id."));
         String id = String.valueOf(item.getId());
         Input in = new StubInput(
@@ -198,7 +198,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"7", "0", "0"}
         );
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);
