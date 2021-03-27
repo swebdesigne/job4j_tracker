@@ -17,7 +17,8 @@ public class BankService {
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        if (findByRequisite(passport, account.getRequisite()) == null) {
+        if (user != null && !users.get(user)
+                .contains(findByRequisite(passport, account.getRequisite()))) {
             users.get(user).add(account);
         }
     }
@@ -27,6 +28,7 @@ public class BankService {
         for (User value : users.keySet()) {
             if (value.getPassport().equals(passport)) {
                 result = value;
+                break;
             }
         }
         return result;
@@ -36,11 +38,10 @@ public class BankService {
         Account result = null;
         User user = findByPassport(passport);
         if (user != null) {
-            for (User value : users.keySet()) {
-                for (Account list : users.get(value)) {
-                    if (list.getRequisite().equals(requisite)) {
-                        result = list;
-                    }
+            for (Account list : users.get(user)) {
+                if (list.getRequisite().equals(requisite)) {
+                    result = list;
+                    break;
                 }
             }
         }
@@ -48,12 +49,11 @@ public class BankService {
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
-                                 String destPassport, String destRequisite, double amount)
-            throws NullPointerException {
+                                 String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
         Account account1 = findByRequisite(srcPassport, srcRequisite);
         Account account2 = findByRequisite(destPassport, destRequisite);
-        if (account1.getBalance() >= amount) {
+        if ((account1 != null && account2 != null) && account1.getBalance() >= amount) {
             account1.setBalance(account1.getBalance() - amount);
             account2.setBalance(account2.getBalance() + amount);
             rsl = true;

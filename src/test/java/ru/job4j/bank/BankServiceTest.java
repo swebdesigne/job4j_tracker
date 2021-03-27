@@ -57,15 +57,4 @@ public class BankServiceTest {
                 is(false)
         );
     }
-
-    @Test (expected = NullPointerException.class)
-    public void whenNotExistsAccount() {
-        User user = new User("3434", "Petr Arsentev");
-        BankService bank = new BankService();
-        bank.addUser(user);
-        bank.addAccount(user.getPassport(), new Account("5546", 150D));
-        bank.addAccount(user.getPassport(), new Account("113", 50D));
-        bank.transferMoney(user.getPassport(), "5547",
-                user.getPassport(), "113", 200D);
-    }
 }
