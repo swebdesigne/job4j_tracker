@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -211,5 +213,31 @@ public class StartUITest {
                                 + "0. Exit%n"
                 )
         ));
+    }
+
+    @Test
+    public void whenSortASC() {
+            List<Item> sort = Arrays.asList(
+                    new Item(1, "Petr"),
+                    new Item(3, "Alina"),
+                    new Item(2, "Igor")
+            );
+            Collections.sort(sort);
+            assertThat(sort.toString(),
+                    is("[" + sort.get(0) + ", " + sort.get(1) + ", " + sort.get(2) + "]")
+            );
+    }
+
+    @Test
+    public void whenSortDESC() {
+        List<Item> sort = Arrays.asList(
+                new Item(1, "Petr"),
+                new Item(3, "Alina"),
+                new Item(2, "Igor")
+        );
+        Collections.sort(sort, new SortByName());
+        assertThat(sort.toString(),
+                is("[" + sort.get(0) + ", " + sort.get(1) + ", " + sort.get(2) + "]")
+        );
     }
 }
