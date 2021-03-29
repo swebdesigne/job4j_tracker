@@ -2,12 +2,10 @@ package ru.job4j.tracker;
 
 import junit.framework.TestCase;
 import org.junit.Test;
+import ru.job4j.collection.User;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -217,27 +215,31 @@ public class StartUITest {
 
     @Test
     public void whenSortASC() {
-            List<Item> sort = Arrays.asList(
+            List<Item> items = Arrays.asList(
                     new Item(1, "Petr"),
-                    new Item(3, "Alina"),
+                    new Item(3, "Petr"),
                     new Item(2, "Igor")
             );
-            Collections.sort(sort);
-            assertThat(sort.toString(),
-                    is("[" + sort.get(0) + ", " + sort.get(1) + ", " + sort.get(2) + "]")
-            );
+        Iterator<Item> it = items.iterator();
+        Collections.sort(items);
+        assertThat(it.next(), is(new Item(1, "Petr")));
+        assertThat(it.next(), is(new Item(2, "Igor")));
+        assertThat(it.next(), is(new Item(3, "Petr")));
     }
 
     @Test
     public void whenSortDESC() {
-        List<Item> sort = Arrays.asList(
+        List<Item> items = Arrays.asList(
                 new Item(1, "Petr"),
                 new Item(3, "Alina"),
                 new Item(2, "Igor")
         );
-        Collections.sort(sort, new SortByName());
-        assertThat(sort.toString(),
-                is("[" + sort.get(0) + ", " + sort.get(1) + ", " + sort.get(2) + "]")
-        );
+        List<Item> sort =  Arrays.asList(
+                new Item(3, "Alina"),
+                new Item(2, "Igor"),
+                new Item(1, "Petr")
+                );
+        Collections.sort(items, new SortByName());
+        assertThat(items, is(sort));
     }
 }
