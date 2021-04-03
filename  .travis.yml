@@ -18,7 +18,8 @@ notifications:
       -swebdesigne@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
-  env:
-    global:
-      - CODECOV_TOKEN="9e89474a-888a-454a-9558-ef30cd3e32a7"
+
+env:
+  global:
+    - CODECOV_TOKEN="9e89474a-888a-454a-9558-ef30cd3e32a7"
 
