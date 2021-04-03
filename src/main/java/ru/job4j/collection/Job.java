@@ -29,8 +29,12 @@ public class Job implements Comparable<Job> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Job job = (Job) o;
         return priority == job.priority && Objects.equals(name, job.name);
     }

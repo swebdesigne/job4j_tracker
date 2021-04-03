@@ -13,7 +13,8 @@ public class Doctor extends Profession {
 
     public String getPatientName(int val) {
         String[] array = {"Петр", "Аня", "Иван"};
-        return pacientName = array[val];
+        pacientName = array[val];
+        return pacientName;
     }
 
     public String getPatientSurName(int val) {

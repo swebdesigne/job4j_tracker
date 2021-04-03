@@ -26,7 +26,8 @@ public class Pacient extends Doctor {
     }
 
     public int setId() {
-        return this.id = 0;
+        this.id = 0;
+        return this.id;
     }
 
     public static void main(String[] args) {
