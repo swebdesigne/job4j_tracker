@@ -18,17 +18,20 @@ public class FreezeStr {
     }
 
     public static boolean eq(String left, String right) {
-        boolean rsl = true;
         char[] l = left.toCharArray();
         char[] r = right.toCharArray();
         HashMap<Character, Integer> check = put(l);
-        HashMap<Character, Integer> check2 = put(r);
-        for (char i : check.keySet()) {
-            if (!check2.containsKey(i) || !check2.get(i).equals(check.get(i))) {
-                rsl = false;
-                break;
+        for (char i : r) {
+            if (!check.containsKey(i)) {
+                return false;
+            } else {
+                if (check.get(i) == 1) {
+                    check.remove(i);
+                } else {
+                    check.put(i, check.get(i) - 1);
+                }
             }
         }
-        return rsl;
+        return check.isEmpty();
     }
 }
