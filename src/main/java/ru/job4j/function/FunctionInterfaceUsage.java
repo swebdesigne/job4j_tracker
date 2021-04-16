@@ -28,8 +28,10 @@ public class FunctionInterfaceUsage {
         System.out.println("Result the work biFunction: " + biFunc.apply("Name", 123));
         System.out.println("Result the work biFunction: " + biFunc.apply("Name", 12345));
         UnaryOperator<StringBuilder> builder = b -> b.reverse();
-        System.out.println("String after reverse: " + builder.apply(new StringBuilder("String for test")));
-        System.out.println("String after reverse: " + builder.apply(new StringBuilder("tset rof gnirtS")));
+        System.out.println("String after reverse: "
+                + builder.apply(new StringBuilder("String for test")));
+        System.out.println("String after reverse: "
+                + builder.apply(new StringBuilder("tset rof gnirtS")));
         BinaryOperator<StringBuilder> biBuilder = (b1, b2) -> b1.append(" ").append(b2);
         System.out.println(
                 "String after concatenation: " + biBuilder.apply(

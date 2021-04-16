@@ -26,7 +26,8 @@ public class FI {
             System.out.println(a.getName() + " = " +  a.getSize());
         }
         Comparator<String> cmpText = (left, right) -> right.compareTo(left);
-        Comparator<String> cmpDescSize = (left, right) -> Integer.compare(right.length(), left.length());
+        Comparator<String> cmpDescSize = (left, right) -> Integer.compare(right.length(),
+                left.length());
         List<String> str = Arrays.asList("Igor", "Boris");
         Collections.sort(str, cmpDescSize);
         System.out.println(str);
