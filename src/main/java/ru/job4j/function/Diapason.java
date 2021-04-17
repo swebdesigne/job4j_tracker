@@ -10,13 +10,10 @@ import java.util.function.Predicate;
 
 public class Diapason {
     public static List<Double> diapason(int start, int end, Function<Double, Double> func) {
-        BiFunction<Integer, Integer, List<Double>> dip = (x, y) -> {
-            List<Double> rsl = new ArrayList<>();
-            for (; x < y; x++) {
-                rsl.add((func.apply((double) x)));
-            }
-           return rsl;
-       };
-        return dip.apply(start, end);
+        List<Double> rsl = new ArrayList<>();
+        for (; start < end; start++) {
+            rsl.add((func.apply((double) start)));
+        }
+        return rsl;
     }
 }
