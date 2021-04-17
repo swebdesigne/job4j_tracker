@@ -26,8 +26,8 @@ public class DiapasonTest {
 
     @Test
     public void whenLinearFunctionThenSquareResults() {
-        List<Double> result = Diapason.diapason(5, 8, x -> 2 * Math.pow(x, 2) + 1);
-        List<Double> expected = Arrays.asList(51D, 73D, 99D);
+        List<Double> result = Diapason.diapason(5, 8, x -> 2 * Math.pow(2, x) + 1);
+        List<Double> expected = Arrays.asList(65D, 129D, 257D);
         assertThat(result, is(expected));
     }
 }
