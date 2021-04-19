@@ -54,7 +54,7 @@ public class StreamUsage {
             integers.add(5);
             integers.add(-5);
             List<Integer> newIntegers = integers.stream()
-                    .filter(integer -> integer < 0)
+                    .filter(integer -> integer >= 0)
                     .collect(Collectors.toList());
             newIntegers.forEach(System.out::println);
             System.out.println("========== newTasks ===========");
