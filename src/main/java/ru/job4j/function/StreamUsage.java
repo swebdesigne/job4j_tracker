@@ -48,10 +48,21 @@ public class StreamUsage {
             integers.add(3);
             integers.add(4);
             integers.add(5);
-            List<Integer> newIntegers = integers.stream().filter(
-                    integer -> integer % 2 == 0
-            ).collect(Collectors.toList());
+            List<Integer> newIntegers = integers.stream()
+                    .filter(integer -> integer % 2 == 0)
+                    .collect(Collectors.toList());
             newIntegers.forEach(System.out::println);
+            System.out.println("========== newTasks ===========");
+            List<Task> newTasks = List.of(
+                    new Task("Bug #1", 10),
+                    new Task("Task #2", 20),
+                    new Task("Bug #3", 40)
+            );
+            newTasks.stream()
+                    .filter(task -> task.name.contains("Bug"))
+                    .filter(task -> task.spent > 30)
+                    .map(task -> task.name + " " + task.spent)
+                    .forEach(System.out::println);
         }
     }
 }
