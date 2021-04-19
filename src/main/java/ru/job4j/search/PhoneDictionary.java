@@ -17,9 +17,12 @@ public class PhoneDictionary {
      */
 
     public ArrayList<Person> find(String key) {
-        System.out.println(key);
         ArrayList<Person> result = new ArrayList<>();
-        Predicate<Person> combine = x -> persons.contains(x);
+        Predicate<Person> name = x -> x.getName().contains(key);
+        Predicate<Person> surName = x -> x.getSurname().contains(key);
+        Predicate<Person> address = x -> x.getAddress().contains(key);
+        Predicate<Person> phone = x -> x.getPhone().contains(key);
+        Predicate<Person> combine = name.or(surName).or(address).or(phone);
         for (Person person : persons) {
             if (combine.test(person)) {
                 result.add(person);
