@@ -42,7 +42,21 @@ public class StreamUsage {
                     task -> task.name.contains("Bug")
             ).collect(Collectors.toList());
             System.out.println(nBugs);
-
+            ArrayList<Integer> integers = new ArrayList<>();
+            integers.add(1);
+            integers.add(-1);
+            integers.add(2);
+            integers.add(-2);
+            integers.add(3);
+            integers.add(-3);
+            integers.add(4);
+            integers.add(-4);
+            integers.add(5);
+            integers.add(-5);
+            List<Integer> newIntegers = integers.stream()
+                    .filter(integer -> integer < 0)
+                    .collect(Collectors.toList());
+            newIntegers.forEach(System.out::println);
             System.out.println("========== newTasks ===========");
             List<Task> newTasks = List.of(
                     new Task("Bug #1", 10),
