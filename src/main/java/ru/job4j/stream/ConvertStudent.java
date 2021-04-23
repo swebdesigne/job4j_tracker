@@ -10,7 +10,7 @@ public class ConvertStudent {
         return students.stream()
                 .collect(
                         Collectors.toMap(
-                                student -> String.valueOf(student.getSurname()),
+                                Student::getSurname,
                                 student -> student
                         )
                 );
