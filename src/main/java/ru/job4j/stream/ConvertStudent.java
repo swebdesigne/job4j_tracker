@@ -12,9 +12,7 @@ public class ConvertStudent {
                         Collectors.toMap(
                                 Student::getSurname,
                                 student -> student,
-                                (name, student) -> {
-                                    return name.equals(student) ? name : student;
-                                }
+                                (name, dublicate) -> name
                         )
                 );
     }
