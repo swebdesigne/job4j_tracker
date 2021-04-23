@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class ConvertStudent {
     public static Map<String, Student> convert(List<Student> students) {
         return students.stream()
+                .distinct()
                 .collect(
                         Collectors.toMap(
                                 Student::getSurname,
