@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ListNumber {
-    public static List<Integer> convertMatrixToListNumbers(int[][] arrays) {
+    public static List<Integer> convertMatrixToListNumbers(Integer[][] arrays) {
         return Arrays.stream(arrays)
-                .flatMap(i -> Stream.of(i[0], i[1], i[2]))
+                .flatMap(i -> Stream.of(i))
                 .collect(Collectors.toList());
     }
 

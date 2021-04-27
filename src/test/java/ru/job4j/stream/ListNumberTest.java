@@ -11,7 +11,7 @@ import static org.hamcrest.core.Is.is;
 public class ListNumberTest {
     @Test
     public void convertMatrixToListNumbers() {
-        int[][] arrays = {
+        Integer[][] arrays = {
                 {1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}
