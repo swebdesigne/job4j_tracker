@@ -96,7 +96,10 @@ public class BankService {
         boolean rsl = false;
         Optional<Account> account1 = findByRequisite(srcPassport, srcRequisite);
         Optional<Account> account2 = findByRequisite(destPassport, destRequisite);
-        if ((account1 != null && account2 != null) && account1.get().getBalance() >= amount) {
+        if (
+                (account1.isPresent() && account2.isPresent())
+                && account1.get().getBalance() >= amount
+        ) {
             account1.get().setBalance(account1.get().getBalance() - amount);
             account2.get().setBalance(account2.get().getBalance() + amount);
             rsl = true;
