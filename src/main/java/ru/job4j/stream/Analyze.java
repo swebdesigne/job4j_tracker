@@ -11,7 +11,7 @@ public class Analyze {
     public static double averageScore(Stream<Pupil> stream) {
         return stream
                 .flatMap(subject -> subject.getSubjects().stream())
-                .mapToInt(Subject::getScore)
+                .mapToInt(Subject::getScope)
                 .average()
                 .orElse(0D);
     }
@@ -21,7 +21,7 @@ public class Analyze {
                 .map(value -> new Tuple(
                         value.getName(),
                         value.getSubjects()
-                                .stream().mapToInt(Subject::getScore).average().orElse(0D))
+                                .stream().mapToInt(Subject::getScope).average().orElse(0D))
                 ).collect(Collectors.toList());
     }
 
@@ -30,7 +30,7 @@ public class Analyze {
                 .flatMap(pupil -> pupil.getSubjects().stream())
                 .collect(Collectors.groupingBy(
                         Subject::getName, LinkedHashMap::new,
-                        Collectors.averagingDouble(Subject::getScore))
+                        Collectors.averagingDouble(Subject::getScope))
                 ).entrySet()
                 .stream()
                 .map(convert -> new Tuple(convert.getKey(), convert.getValue()))
@@ -42,21 +42,19 @@ public class Analyze {
                 .map(value -> new Tuple(
                         value.getName(),
                         value.getSubjects()
-                                .stream().mapToInt(Subject::getScore).sum())
-                ).max((entry1, entry2) ->
-                        (int) (entry1.getScore() - entry2.getScore())).orElse(null);
+                                .stream().mapToInt(Subject::getScope).sum())
+                ).max(Comparator.comparingDouble(Tuple::getScope)).orElse(null);
     }
 
     public static Tuple bestSubject(Stream<Pupil> stream) {
         return stream
                 .flatMap(pupil -> pupil.getSubjects().stream())
                 .collect(Collectors.groupingBy(
-                        Subject::getName, LinkedHashMap::new,
-                        Collectors.summingDouble(Subject::getScore))
+                        Subject::getName,
+                        Collectors.summingDouble(Subject::getScope))
                 ).entrySet()
                 .stream()
                 .map(convert -> new Tuple(convert.getKey(), convert.getValue()))
-                .max((entry1, entry2) ->
-                        (int) (entry1.getScore() - entry2.getScore())).orElse(null);
+                .max(Comparator.comparing(Tuple::getScope)).orElse(null);
     }
 }

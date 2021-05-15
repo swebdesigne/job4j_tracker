@@ -2,18 +2,18 @@ package ru.job4j.stream;
 
 public class Subject {
     private String name;
-    private int score;
+    private int scope;
 
-    public Subject(String name, int score) {
+    public Subject(String name, int scope) {
         this.name = name;
-        this.score = score;
+        this.scope = scope;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getScore() {
-        return score;
+    public int getScope() {
+        return scope;
     }
 }

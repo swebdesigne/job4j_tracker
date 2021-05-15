@@ -4,15 +4,15 @@ import java.util.Objects;
 
 public class Tuple {
     private String name;
-    private double score;
+    private double scope;
 
-    public Tuple(String name, double score) {
+    public Tuple(String name, double scope) {
         this.name = name;
-        this.score = score;
+        this.scope = scope;
     }
 
-    public double getScore() {
-        return score;
+    public double getScope() {
+        return scope;
     }
 
     @Override
@@ -20,12 +20,12 @@ public class Tuple {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tuple tuple = (Tuple) o;
-        return Double.compare(tuple.score, score) == 0 &&
+        return Double.compare(tuple.scope, scope) == 0 &&
                 Objects.equals(name, tuple.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, score);
+        return Objects.hash(name, scope);
     }
 }
