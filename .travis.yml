@@ -1,4 +1,3 @@
-
 # используем язык java. Travis CI поддерживает другие языки тоже.
 language: java
 jdk:
@@ -16,10 +15,9 @@ after_success:
 notifications:
   email:
     recipients:
-      -swebdesigne@gmail.com
+      -swebdesigne@gmail.ru
     on_success: never # default: change
-    on_failure: always # defa,ult: always
-
+    on_failure: always # default: always
 env:
   global:
     - CODECOV_TOKEN="0b84760c-7a6a-4271-9a15-8ad275517860"
