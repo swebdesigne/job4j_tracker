@@ -39,6 +39,6 @@ public class EasyStream implements EasyStreamBuilder {
 
         @Override
         public List<Integer> collect() {
-            return this.input;
+            return new ArrayList<>(this.input);
         }
 }
