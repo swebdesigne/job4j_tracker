@@ -1,5 +1,6 @@
 # используем язык java. Travis CI поддерживает другие языки тоже.
 language: java
+cache: bundler
 jdk:
   - openjdk14
 
